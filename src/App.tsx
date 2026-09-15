@@ -146,7 +146,7 @@ function App() {
         <div className="header-top">
           <button className="mobile-menu-button" aria-label="Open menu" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={21} /> : <Menu size={21} />}</button>
           <button className="brand" onClick={() => setActiveView('home')} aria-label="Riddhi Siddhi Jewels home">
-            <img src="/logo.png" alt="Riddhi Siddhi Jewels" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Riddhi Siddhi Jewels" />
           </button>
           <div className="search-wrap">
             <Search size={17} />
