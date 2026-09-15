@@ -215,7 +215,7 @@ function App() {
       <footer className="footer">
         <div className="footer-top">
           <div className="footer-brand">
-            <img src="/logo.png" alt="Riddhi Siddhi Jewels" className="footer-logo" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Riddhi Siddhi Jewels" className="footer-logo" />
             <p>Jewels that tell your story.</p>
             <div className="socials">
               <button aria-label="Facebook"><Facebook size={16} /></button>
