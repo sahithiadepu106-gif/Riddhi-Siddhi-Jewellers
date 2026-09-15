@@ -13,6 +13,7 @@ import {
   Mail,
   Menu,
   Mic,
+  Phone,
   Play,
   Search,
   ShoppingBag,
@@ -21,6 +22,7 @@ import {
   Sparkles,
   Star,
   Truck,
+  Twitter,
   UserRound,
   X,
   Youtube,
@@ -153,7 +155,6 @@ function App() {
             <input value={query} onChange={(event) => setQuery(event.target.value)} onFocus={() => activeView === 'home' && openCatalog()} placeholder="Search for gold jewellery, diamond jewellery and more..." aria-label="Search jewellery" />
             <button className="search-tool" aria-label="Search by image"><Camera size={17} /></button>
             <button className="search-tool" aria-label="Search by voice"><Mic size={17} /></button>
-            <span className="search-shortcut">⌘ K</span>
           </div>
           <div className="header-actions">
             <button aria-label="Account"><UserRound size={19} /></button>
@@ -177,7 +178,10 @@ function App() {
               <p className="eyebrow">{heroSlides[slide].eyebrow}</p>
               <h1>{heroSlides[slide].title.split('\n').map((line) => <span key={line}>{line}<br /></span>)}</h1>
               <p>{heroSlides[slide].text}</p>
-              <button className="button dark-button" onClick={openCatalog}>{heroSlides[slide].button} <ArrowRight size={16} /></button>
+              <div className="hero-buttons">
+                <button className="button dark-button" onClick={openCatalog}>Shop Now <ArrowRight size={16} /></button>
+                <button className="button outline-button" onClick={openCatalog}>Read More</button>
+              </div>
             </div>
             <button className="hero-arrow right" onClick={() => setSlide((slide + 1) % heroSlides.length)} aria-label="Next slide"><ChevronRight /></button>
             <div className="hero-dots">{heroSlides.map((item, index) => <button key={item.title} className={index === slide ? 'active' : ''} onClick={() => setSlide(index)} aria-label={`Go to slide ${index + 1}`} />)}</div>
@@ -208,7 +212,58 @@ function App() {
         </main>
       )}
 
-      <footer className="footer"><div className="footer-top"><div className="footer-brand"><span className="brand-mark"><Gem size={30} strokeWidth={1.3} /></span><h2>RIDDHI SIDDHI</h2><p>Jewels that tell your story.</p><div className="socials"><button aria-label="Facebook"><Facebook size={16} /></button><button aria-label="Instagram"><Instagram size={16} /></button><button aria-label="Youtube"><Youtube size={17} /></button></div></div><div><h3>Associate with us</h3><a>Contact us</a><a>Our stores</a><a>Corporate gifting</a><a>Careers</a><a>Blog</a></div><div><h3>Policy matters</h3><a>Terms of use</a><a>Privacy policy</a><a>Shipping policy</a><a>Returns & exchange</a><a>Grievance</a></div><div className="footer-contact"><h3>Stay in the know</h3><p>Get first access to new drops, private events and special stories.</p>{subscribed ? <div className="subscribed">You are on the list. Thank you.</div> : <div className="subscribe"><Mail size={16} /><input placeholder="Your email address" value={email} onChange={(event) => setEmail(event.target.value)} /><button onClick={subscribe} aria-label="Subscribe"><ArrowRight size={16} /></button></div>}</div></div><div className="footer-bottom"><span>© 2024 Riddhi Siddhi Jewels</span><span>Designed for the moments that matter.</span><span>Made with care in India</span></div></footer>
+      <footer className="footer">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <img src="/logo.png" alt="Riddhi Siddhi Jewels" className="footer-logo" />
+            <p>Jewels that tell your story.</p>
+            <div className="socials">
+              <button aria-label="Facebook"><Facebook size={16} /></button>
+              <button aria-label="Instagram"><Instagram size={16} /></button>
+              <button aria-label="Youtube"><Youtube size={17} /></button>
+              <button aria-label="Twitter"><Twitter size={16} /></button>
+            </div>
+          </div>
+          <div>
+            <h3>Associate with us</h3>
+            <a>Contact us</a><a>Our stores</a><a>Corporate gifting</a><a>Careers</a><a>Blog</a>
+          </div>
+          <div>
+            <h3>Policy matters</h3>
+            <a>Terms of use</a><a>Privacy policy</a><a>Shipping policy</a><a>Returns &amp; exchange</a><a>Grievance</a>
+          </div>
+          <div className="footer-contact">
+            <h3>Stay in the know</h3>
+            <p>Get first access to new drops, private events and special stories.</p>
+            {subscribed ? (
+              <div className="subscribed">You are on the list. Thank you.</div>
+            ) : (
+              <div className="subscribe-wrap">
+                <div className="subscribe">
+                  <Mail size={16} />
+                  <input placeholder="Your email address" value={email} onChange={(event) => setEmail(event.target.value)} />
+                </div>
+                <button className="subscribe-btn" onClick={subscribe}>Subscribe</button>
+              </div>
+            )}
+            <div className="contact-links">
+              <a className="contact-link" href="https://wa.me/919876543210" target="_blank" rel="noreferrer">
+                <span className="contact-icon whatsapp-icon"><Phone size={14} /></span>
+                +91 98765 43210
+              </a>
+              <a className="contact-link" href="mailto:riddhi.siddhijewels@gmail.com">
+                <span className="contact-icon"><Mail size={14} /></span>
+                riddhi.siddhijewels@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2024 Riddhi Siddhi Jewels</span>
+          <span>Designed for the moments that matter.</span>
+          <span>Made with care in India</span>
+        </div>
+      </footer>
     </div>
   );
 }
